@@ -2,6 +2,7 @@
 if (!defined('IN_SAESPOT')) exit('error: 403 Access Denied'); 
 
 echo '
+<meta property="qc:admins" content="63475745234661651676516367" />
 <div class="title">
     <div class="float-left fs14">
         <a href="/">',$options['name'],'</a> &raquo; 最近更新 • <a href="/feed">Atom Feed</a>
