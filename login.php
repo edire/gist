@@ -4,6 +4,7 @@ define('IN_SAESPOT', 1);
 include(dirname(__FILE__) . '/config.php');
 include(dirname(__FILE__) . '/common.php');
 
+/*
 // 屏蔽下面几行可以通过 用户名和密码 登录
 if(($options['qq_appid'] && $options['qq_appkey']) || ($options['wb_key'] && $options['wb_secret'])){
     header("content-Type: text/html; charset=UTF-8");
@@ -18,6 +19,7 @@ if(($options['qq_appid'] && $options['qq_appkey']) || ($options['wb_key'] && $op
     exit;
 }
 
+*/
 
 if($cur_user){
     // 如果已经登录用户无聊打开这网址就让他重新登录吧
