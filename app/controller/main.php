@@ -15,7 +15,7 @@ class main extends spController
 		
 		$i=0;
 		foreach($article_sql as $arc){
-			$result[i][title]=$arc[title];
+			$result[$i][title]=$arc[title];
 			$i++;
 		}
 		return $result;
