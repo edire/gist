@@ -13,9 +13,10 @@ class main extends spController
 		
 		$article_sql=$article->findAll();
 		
-		i=0;
+		$i=0;
 		foreach($article_sql as $arc){
 			$result[i][title]=$arc[title];
+			$i++;
 		}
 		return $result;
 		
