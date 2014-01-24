@@ -3,7 +3,13 @@ class main extends spController
 {
 	function index(){
 		$article=$this->select();
-		print_r($article);
+		foreach($article as $art){
+			echo "$art[title]<br>";
+			echo "$art[user]<br>";
+			echo "$art[cate]<br>";
+			echo "$art[addtime]<br>";
+			echo "$art[comments]<br><hr>";
+		}
 	}
 	public function select(){
 		$user=spClass('users');
