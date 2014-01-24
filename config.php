@@ -10,9 +10,9 @@ $servername = 'localhost';
 //数据库用户名
 $dbusername = 'root';
 //数据库密码
-$dbpassword = '8641683';
+$dbpassword = '123';
 //数据库名
-$dbname = 'gist';
+$dbname = 'yunbbs';
 //数据端口
 $dbport = '3306';
 

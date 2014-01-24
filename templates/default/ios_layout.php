@@ -90,7 +90,7 @@ echo '</span>
 
 if($cur_user && $cur_user['flag']>=99){
 echo '
-<div class="title">管理员面板</div>
+<div class="title">管理员面板 <a href="http://youbbs.sinaapp.com/" target="_blank">youbbs官方支持</a></div>
 <div class="main-box main-box-node">
 <div class="btn">
 <a href="/admin-node">分类管理</a><a href="/admin-setting">网站设置</a><a href="/admin-user-list">用户管理</a><a href="/admin-link-list">链接管理</a>
@@ -150,7 +150,7 @@ if($is_mobie){
 }
     
     echo '</p>
-   
+    <p class="float-right">by <a href="http://youbbs.sinaapp.com/" target="_blank">YouBBS v',SAESPOT_VER,'</a></p>
     <div class="c"></div>';
 
 echo '    </div>
