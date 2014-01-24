@@ -2,9 +2,14 @@
 class main extends spController
 {
 	function index(){
-		$this->aaa();
+		$article=$this->select();
+		print_r($article);
 	}
-	public function aaa(){
-		echo "aa";
+	public function select(){
+		$user=spClass('users');
+		$fenlei=spClass('categories');
+		$article=spClass('articles');
+		$article_sql=$article->findAll();
+		return $article_sql;
 	}
 }
