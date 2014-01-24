@@ -3,7 +3,7 @@ class main extends spController
 {
 	function index(){
 		$article=$this->select();
-		echo json_encode($article);
+		echo ch_json_encode($article);
 	}
 	public function select(){
 		$user=spClass('users');
