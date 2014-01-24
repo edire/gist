@@ -3,7 +3,7 @@ define('IN_SAESPOT', 1);
 
 include(dirname(__FILE__) . '/config.php');
 include(dirname(__FILE__) . '/common.php');
-
+/*
 // 屏蔽下面几行可以通过 用户名和密码 注册
 if(($options['qq_appid'] && $options['qq_appkey']) || ($options['wb_key'] && $options['wb_secret'])){
     header("content-Type: text/html; charset=UTF-8");
@@ -17,7 +17,7 @@ if(($options['qq_appid'] && $options['qq_appkey']) || ($options['wb_key'] && $op
     echo '&nbsp;<a href="/">返回首页</a>';
     exit;
 }
-
+*/
 
 if($cur_user){
     header('location: /');
