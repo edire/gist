@@ -9,7 +9,15 @@ class main extends spController
 		$user=spClass('users');
 		$fenlei=spClass('categories');
 		$article=spClass('articles');
+		
+		
 		$article_sql=$article->findAll();
-		return $article_sql;
+		
+		i=0;
+		foreach($article_sql as $arc){
+			$result[i][title]=$arc[title];
+		}
+		return $result;
+		
 	}
 }
