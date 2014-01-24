@@ -3,7 +3,7 @@ class main extends spController
 {
 	function index(){
 		$article=$this->select();
-		echo ch_json_encode($article);
+		return preg_replace("/\\\u([0-9a-f]{4})/ie", "iconv('UCS-2BE', 'UTF-8', pack('H4', '$1'))", json_encode($article));
 	}
 	public function select(){
 		$user=spClass('users');
