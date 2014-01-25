@@ -15,14 +15,7 @@ class main extends spController
 		$page=1;
 	}
 	
-	$article=$this->select($conditions);
-	$i=0;
-	foreach($article as $arc){
-		$arc[$i][content]='';
-		$i++;
-	}
-	$article=$arc;
-	
+	$article=$this->selectlist($conditions);
     echo $this->JSON($article);
 	}
 	
@@ -34,7 +27,7 @@ class main extends spController
 				return false;
 			}
 			
-			$article=$this->select($conditions);
+			$article=$this->selectarc($conditions);
 			echo $this->JSON($article);
 	}						
 
@@ -43,7 +36,32 @@ class main extends spController
  /**************************************************************
   *			数据库读取操作
   *************************************************************/
-	public function select($conditions){
+	public function selectlist($conditions){
+		$user=spClass('users');
+		$cate=spClass('categories');
+		$article=spClass('articles');
+		$article_sql=$article->findAll($conditions);
+		
+		$i=0;
+		foreach($article_sql as $arc){
+			$result[$i][title]=$arc[title];
+			$user_sql=$user->findAll(array('id'=>$arc[uid]));
+			$result[$i][user]=$user_sql[0][name];//id
+			$cate_sql=$cate->findAll(array('id'=>$arc[cid]));
+			$result[$i][cate]=$cate_sql[0][name];//cate
+			$result[$i][addtime]=date("m-d H:i:s",$arc[addtime]);
+			$result[$i][edittime]=date("m-d H:i:s",$arc[edittime]);
+			$result[$i][comments]=$arc[comments];
+			$result[$i][favorites]=$arc[favorites];
+			$i++;
+		}
+		return $result;
+
+		
+	}
+	
+	
+	public function selectarc($conditions){
 		$user=spClass('users');
 		$cate=spClass('categories');
 		$article=spClass('articles');
