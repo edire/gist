@@ -16,6 +16,7 @@ Disallow: /qqsetname
 Disallow: /admin
 Disallow: /forgot
 Disallow: /favorites
+Disallow: *
 
 ';
 

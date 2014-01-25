@@ -33,6 +33,7 @@ class main extends spController
 			$result[$i][cate]=$cate_sql[0][name];//cate
 			$result[$i][addtime]=$arc[addtime];
 			$result[$i][comments]=$arc[comments];
+			$result[$i][favorites]=$arc[favorites];
 			$i++;
 		}
 		return $result;
