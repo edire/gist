@@ -1,47 +1,18 @@
 <?php
-class main extends spController
-{
-	function index(){
-	if($_GET['cate']){
-		$cateid=$_GET['cate'];
-		$conditions=array('cid'=>$cateid);
-	}else{
-		$conditions=null;
-	}
-	if($_GET['page']){
-		$page=$_GET['page'];
-		
-	}else{
-		$page=1;
-	}
-	
-	$article=$this->select($conditions);
-    echo $this->JSON($article);
-	}
-	
-	function article(){
-			if($_GET['id']){
-				$pageid=$_GET['id'];
-				$conditions=array('id'=>$pageid);
-			}else{
-				return false;
-			}
-			
-			$article=$this->select($conditions);
-			echo $this->JSON($article);
-	}						
 
-	
-	
- /**************************************************************
-  *			数据库读取操作
-  *************************************************************/
+
+
+
+
+
+
+
+
+
 	public function select($conditions){
 		$user=spClass('users');
 		$cate=spClass('categories');
 		$article=spClass('articles');
-		
-		
 		$article_sql=$article->findAll($conditions);
 		
 		$i=0;
@@ -52,14 +23,17 @@ class main extends spController
 			$cate_sql=$cate->findAll(array('id'=>$arc[cid]));
 			$result[$i][cate]=$cate_sql[0][name];//cate
 			$result[$i][addtime]=date("m-d H:i:s",$arc[addtime]);
+			$result[$i][edittime]=date("m-d H:i:s",$arc[edittime]);
 			$result[$i][comments]=$arc[comments];
 			$result[$i][favorites]=$arc[favorites];
+			$result[$i][content]=$arc[content];
 			$i++;
 		}
 		return $result;
+
 		
 	}
-	
+
 	public function JSON($array) {
 			
   /**************************************************************
@@ -108,4 +82,5 @@ class main extends spController
         $json = json_encode($array);
         return urldecode($json);
     }
-}
+
+?>
