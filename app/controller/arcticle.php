@@ -9,7 +9,7 @@
 
 
 
-	public function select($conditions){
+	public function selectarc($conditions){
 		$user=spClass('users');
 		$cate=spClass('categories');
 		$article=spClass('articles');

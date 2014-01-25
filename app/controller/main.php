@@ -27,7 +27,7 @@ class main extends spController
 				return false;
 			}
 			
-			$article=$this->selectarc($conditions);
+			$article=$this->selectlist($conditions);
 			echo $this->JSON($article);
 	}						
 
