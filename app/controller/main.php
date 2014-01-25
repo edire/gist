@@ -88,7 +88,7 @@ class main extends spController
 	
 	public function JSON($array) {
 			
-	$array = str_replace("\n","<br>",$array);
+	$array = str_replace(array("\n" , " " ) , array("<br>"," ") ,$array); 
   /**************************************************************
  *
  *  使用特定function对数组中所有元素做处理
