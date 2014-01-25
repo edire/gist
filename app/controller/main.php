@@ -11,13 +11,13 @@ class main extends spController
  /**************************************************************
   *			数据库读取操作
   *************************************************************/
-	public function select(conditions){
+	public function select($conditions){
 		$user=spClass('users');
 		$cate=spClass('categories');
 		$article=spClass('articles');
 		
 		
-		$article_sql=$article->findAll(conditions);
+		$article_sql=$article->findAll($conditions);
 		
 		$i=0;
 		foreach($article_sql as $arc){
