@@ -17,10 +17,11 @@ class main extends spController
 	
 	$article=$this->select($conditions);
 	$i=0;
-	foreach($article){
-		$article[$i][content]='';
+	foreach($article as $arc){
+		$arc[$i][content]='';
 		$i++;
 	}
+	$article=$arc;
 	
     echo $this->JSON($article);
 	}
