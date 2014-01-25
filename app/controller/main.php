@@ -16,7 +16,9 @@ class main extends spController
 	}
 	
 	$article=$this->selectlist($conditions);
-    echo $this->JSON($article);
+			$arr=$this->JSON($article);
+			$json = str_replace('\n',<br> ,$arr); 
+			echo $json;
 	}
 	
 	function article(){
@@ -28,7 +30,10 @@ class main extends spController
 			}
 			
 			$article=$this->selectarc($conditions);
-			echo $this->JSON($article);
+			$arr=$this->JSON($article);
+			$json = str_replace('\n',<br> ,$arr); 
+			echo $json;
+			
 	}						
 
 	
@@ -88,7 +93,7 @@ class main extends spController
 	
 	public function JSON($array) {
 			
-	$array = str_replace(array("\n" , " " ) , array("<br>"," ") ,$array); 
+	
   /**************************************************************
  *
  *  使用特定function对数组中所有元素做处理
