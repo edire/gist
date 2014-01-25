@@ -17,7 +17,7 @@ class main extends spController
 	
 	$article=$this->selectlist($conditions);
 			$arr=$this->JSON($article);
-			$json = str_replace('\n','<br>' ,$arr); 
+			$json = preg_replace("'([\r\n])[\s]+'", "<br>", $str);
 			echo $json;
 	}
 	
@@ -31,7 +31,7 @@ class main extends spController
 			
 			$article=$this->selectarc($conditions);
 			$arr=$this->JSON($article);
-			$json = str_replace('\n','<br>',$arr); 
+			$json = preg_replace("'([\r\n])[\s]+'", "<br>", $str);
 			echo $json;
 			
 	}						
