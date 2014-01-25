@@ -31,7 +31,7 @@ class main extends spController
 			$result[$i][user]=$user_sql[0][name];//id
 			$cate_sql=$cate->findAll(array('id'=>$arc[cid]));
 			$result[$i][cate]=$cate_sql[0][name];//cate
-			$result[$i][addtime]=$arc[addtime];
+			$result[$i][addtime]=date("m-d H:i:s",$arc[addtime]);
 			$result[$i][comments]=$arc[comments];
 			$result[$i][favorites]=$arc[favorites];
 			$i++;
