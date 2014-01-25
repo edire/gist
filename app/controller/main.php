@@ -16,8 +16,10 @@ class main extends spController
 	}
 	
 	$article=$this->select($conditions);
+	$i=0;
 	foreach($article){
-		$article[content]='';
+		$article[$i][content]='';
+		$i++;
 	}
 	
     echo $this->JSON($article);
