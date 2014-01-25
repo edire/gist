@@ -9,6 +9,9 @@ class spJson(){
      *  @access public
      *
      *************************************************************/
+	 public function a(){
+		echo 'aaa';
+	 }
     public function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
     {
         static $recursive_counter = 0;

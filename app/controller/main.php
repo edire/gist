@@ -4,7 +4,7 @@ class main extends spController
 	function index(){
 		$json=spClass('spJson');
 		$article=$this->select();
-		echo $json->JSON($article);
+		echo $json->a();
 	}
 	public function select(){
 		$user=spClass('users');
