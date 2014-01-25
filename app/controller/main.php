@@ -16,6 +16,7 @@ class main extends spController
 	}
 	
 	$article=$this->select($conditions);
+	$article[content]='';
     echo $this->JSON($article);
 	}
 	
@@ -40,8 +41,6 @@ class main extends spController
 		$user=spClass('users');
 		$cate=spClass('categories');
 		$article=spClass('articles');
-		
-		
 		$article_sql=$article->findAll($conditions);
 		
 		$i=0;
@@ -52,11 +51,14 @@ class main extends spController
 			$cate_sql=$cate->findAll(array('id'=>$arc[cid]));
 			$result[$i][cate]=$cate_sql[0][name];//cate
 			$result[$i][addtime]=date("m-d H:i:s",$arc[addtime]);
+			$result[$i][edittime]=date("m-d H:i:s",$arc[edittime]);
 			$result[$i][comments]=$arc[comments];
 			$result[$i][favorites]=$arc[favorites];
+			$result[$i][content]=$arc[content];
 			$i++;
 		}
 		return $result;
+
 		
 	}
 	
