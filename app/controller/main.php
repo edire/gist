@@ -38,7 +38,7 @@ class main extends spController
      *  @access public
      *
      *************************************************************/
-    function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
+    public function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
     {
         static $recursive_counter = 0;
         if (++$recursive_counter > 1000) {
@@ -70,7 +70,7 @@ class main extends spController
      *  @access public
      *
      *************************************************************/
-    function JSON($array) {
+    public function JSON($array) {
         $this->arrayRecursive($array, 'urlencode', true);
         $json = json_encode($array);
         return urldecode($json);
