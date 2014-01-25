@@ -2,24 +2,15 @@
 class main extends spController
 {
 	function index(){
-  
-    /**************************************************************
-     *
-     *  将数组转换为JSON字符串（兼容中文）
-     *  @param  array   $array      要转换的数组
-     *  @return string      转换得到的json字符串
-     *  @access public
-     *
-     *************************************************************/
-    
-     
-     
-     
-    
-	$article=$this->select();
+	$cateid=$_GET['c'];
+	$conditions=array('cid'=>$cateid);
+	$article=$this->select($conditions);
     echo $this->JSON($article);
 	}
 	
+ /**************************************************************
+  *			数据库读取操作
+  *************************************************************/
 	public function select(){
 		$user=spClass('users');
 		$cate=spClass('categories');
@@ -45,15 +36,15 @@ class main extends spController
 	
 	public function JSON($array) {
 			
-			  /**************************************************************
-			 *
-			 *  使用特定function对数组中所有元素做处理
-			 *  @param  string  &$array     要处理的字符串
-			 *  @param  string  $function   要执行的函数
-			 *  @return boolean $apply_to_keys_also     是否也应用到key上
-			 *  @access public
-			 *
-			 *************************************************************/
+  /**************************************************************
+ *
+ *  使用特定function对数组中所有元素做处理
+ *  @param  string  &$array     要处理的字符串
+ *  @param  string  $function   要执行的函数
+ *  @return boolean $apply_to_keys_also     是否也应用到key上
+ *  @access public
+ *
+ *************************************************************/
 			function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
 			{
 				static $recursive_counter = 0;
@@ -78,8 +69,15 @@ class main extends spController
 				$recursive_counter--;
 			}
 			  
-	
-	
+	  
+/**************************************************************
+ *
+ *  将数组转换为JSON字符串（兼容中文）
+ *  @param  array   $array      要转换的数组
+ *  @return string      转换得到的json字符串
+ *  @access public
+ *
+ *************************************************************/
         arrayRecursive($array, 'urlencode', true);
         $json = json_encode($array);
         return urldecode($json);
