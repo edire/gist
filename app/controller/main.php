@@ -2,8 +2,13 @@
 class main extends spController
 {
 	function index(){
-	$cateid=$_GET['cate'];
-	$conditions=array('cid'=>$cateid);
+	if($_GET['cate']){
+		$cateid=$_GET['cate'];
+		$conditions=array('cid'=>$cateid);
+	}else{
+		$conditions=null;
+	}
+	
 	$article=$this->select($conditions);
     echo $this->JSON($article);
 	}
