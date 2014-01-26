@@ -30,7 +30,7 @@ class main extends spController
 			
 			$article=$this->selectarc($conditions);
 			$arr=$this->JSON($article);
-			$result = preg_replace ('/\n/','', $str);
+			$result = preg_replace ('/\n/','', $arr);
 			echo $result;
 			
 	}						
