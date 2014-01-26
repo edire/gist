@@ -173,6 +173,7 @@ public function geshihua($str){
 	                 "'&(pound|#163);'i",
 	                 "'&(copy|#169);'i",
 	                 "'<[\/\!]*?[^<>]*?>'si",           // 去掉 HTML 标记
+					 "'[\n]+'",
 	                 "'([\r\n])[\s]+'",                 // 去掉空白字符
 	                 "'&#(\d+);'e");                    // 作为 PHP 代码运行
 	
@@ -191,6 +192,7 @@ public function geshihua($str){
 	                  chr(163),
 	                  chr(169),
 	                  "",
+	                  "<br>",
 	                  "\\1",
 	                  "chr(\\1)");
 	
