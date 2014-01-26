@@ -17,8 +17,7 @@ class main extends spController
 	
 	$article=$this->selectlist($conditions);
 			$arr=$this->JSON($article);
-			$json = preg_replace("/\n/", "", $arr);
-			echo $json;
+			echo $arr;
 	}
 	
 	function article(){
@@ -31,8 +30,7 @@ class main extends spController
 			
 			$article=$this->selectarc($conditions);
 			$arr=$this->JSON($article);
-			$json = preg_replace("/\n/", "", $arr);
-			echo $json;
+			echo $arr;
 			
 	}						
 
@@ -91,9 +89,29 @@ class main extends spController
 		
 	}
 	
+	public function gsh($array){
+	$i=0;
+		foreach($array as $arc)
+		{
+				
+				$arr[$i][title]=$this->geshihua($arc[title]);
+				$arr[$i][content]=$this->geshihua($arc[content]);
+				$arr[$i][cate]=$this->geshihua($arc[cate]);
+				$arr[$i][user]=$this->geshihua($arc[user]);
+				$arr[$i][addtime]=$this->geshihua($arc[addtime]);
+				$arr[$i][edittime]=$this->geshihua($arc[edittime]);
+				$arr[$i][comments]=$this->geshihua($arc[comments]);
+				$arr[$i][favorites]=$this->geshihua($arc[favorites]);
+				$i++;
+		}
+		return $arr;
+	}
+	
+	
+	
 	public function JSON($array) {
 			
-	
+	$array=$this->gsh($array);
   /**************************************************************
  *
  *  使用特定function对数组中所有元素做处理
@@ -140,4 +158,47 @@ class main extends spController
         $json = json_encode($array);
         return urldecode($json);
     }
+
+
+//====================转json之前格式化========================================
+public function geshihua($str){
+	$search = array ("'<script[^>]*?>.*?</script>'si",  // 去掉 javascript
+	                 "'&(quot|#34);'i",                 // 替换 HTML 实体
+	                 "'&(amp|#38);'i",
+	                 "'&(lt|#60);'i",
+	                 "'&(gt|#62);'i",
+	                 "'&(nbsp|#160);'i",
+	                 "'&(iexcl|#161);'i",
+	                 "'&(cent|#162);'i",
+	                 "'&(pound|#163);'i",
+	                 "'&(copy|#169);'i",
+	                 "'<[\/\!]*?[^<>]*?>'si",           // 去掉 HTML 标记
+					 "'[\n]+'",
+	                 "'([\r\n])[\s]+'",                 // 去掉空白字符
+					 "'\<br\>'",
+	                 "'&#(\d+);'e");                    // 作为 PHP 代码运行
+	
+
+
+
+
+	$replace = array ("",
+	                  "\"",
+	                  "&",
+	                  "<",
+	                  ">",
+	                  " ",
+	                  chr(161),
+	                  chr(162),
+	                  chr(163),
+	                  chr(169),
+	                  "",
+					  "<br>",
+	                  "\\1",
+					  "&ltbr&gt",
+	                  "chr(\\1)");
+	
+	$result = preg_replace ($search, $replace, $str);
+	return $result;
+}
 }
