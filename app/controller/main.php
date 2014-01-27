@@ -162,6 +162,8 @@ class main extends spController
 
 //====================转json之前格式化========================================
 public function geshihua($str){
+	
+	
 	$search = array ("'<script[^>]*?>.*?</script>'si",  // 去掉 javascript
 	                 "'&(quot|#34);'i",                 // 替换 HTML 实体
 	                 "'&(amp|#38);'i",
@@ -182,7 +184,6 @@ public function geshihua($str){
 
 
 
-
 	$replace = array ("",
 	                  "\"",
 	                  "&",
@@ -197,7 +198,7 @@ public function geshihua($str){
 	                  "&ltbr\/&gt",
 	                  "\\1",
 	                  '\\"',
-	                  "\\",
+	                  "/\\\/",
 	                  "chr(\\1)");
 	
 	$result = preg_replace ($search, $replace, $str);
