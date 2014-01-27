@@ -197,6 +197,7 @@ public function geshihua($str){
 	                  "chr(\\1)");
 	
 	$result = preg_replace ($search, $replace, $str);
+	$result=addslashes($result);
 	return $result;
 }
 }
