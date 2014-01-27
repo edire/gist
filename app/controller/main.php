@@ -165,6 +165,7 @@ public function geshihua($str){
 	
 	
 	$search = array ("'<script[^>]*?>.*?</script>'si",  // 去掉 javascript
+	                 "/\\\\/",                 // 变\
 	                 "'&(quot|#34);'i",                 // 替换 HTML 实体
 	                 "'&(amp|#38);'i",
 	                 "'&(lt|#60);'i",
@@ -178,13 +179,13 @@ public function geshihua($str){
 					 "'[\r\n]+'",
 	                 "'([\r\n])[\s]+'",                 // 去掉空白字符
 	                 "/\"/",                 // 去掉"
-	                 "/\\\\/",                 // 去掉\
 	                 "'&#(\d+);'e");                    // 作为 PHP 代码运行
 	
 
 
 
 	$replace = array ("",
+	                  "\\\\",
 	                  "\"",
 	                  "&",
 	                  "<",
@@ -198,7 +199,6 @@ public function geshihua($str){
 	                  "&ltbr\/&gt",
 	                  "\\1",
 	                  '\\"',
-	                  "'\\\\\'",
 	                  "chr(\\1)");
 	
 	$result = preg_replace ($search, $replace, $str);
