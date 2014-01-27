@@ -195,7 +195,7 @@ public function geshihua($str){
 	                  "",
 	                  "&ltbr\/&gt",
 	                  "\\1",
-	                  "",
+	                  "\"",
 	                  "chr(\\1)");
 	
 	$result = preg_replace ($search, $replace, $str);
