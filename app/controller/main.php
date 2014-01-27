@@ -47,6 +47,7 @@ class main extends spController
 		
 		$i=0;
 		foreach($article_sql as $arc){
+			$result[$i][id]=$arc[id];
 			$result[$i][title]=$arc[title];
 			$user_sql=$user->findAll(array('id'=>$arc[uid]));
 			$result[$i][user]=$user_sql[0][name];//id
@@ -72,6 +73,7 @@ class main extends spController
 		
 		$i=0;
 		foreach($article_sql as $arc){
+			$result[$i][id]=$arc[id];
 			$result[$i][title]=$arc[title];
 			$user_sql=$user->findAll(array('id'=>$arc[uid]));
 			$result[$i][user]=$user_sql[0][name];//id
@@ -94,6 +96,7 @@ class main extends spController
 		foreach($array as $arc)
 		{
 				
+				$arr[$i][id]=$this->geshihua($arc[id]);
 				$arr[$i][title]=$this->geshihua($arc[title]);
 				$arr[$i][content]=$this->geshihua($arc[content]);
 				$arr[$i][cate]=$this->geshihua($arc[cate]);
