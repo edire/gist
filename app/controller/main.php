@@ -192,7 +192,7 @@ public function geshihua($str){
 	                  chr(163),
 	                  chr(169),
 	                  "",
-	                  "\&ltbr\/\&gt",
+	                  "\<br\/\>",
 	                  "\\1",
 	                  "chr(\\1)");
 	
