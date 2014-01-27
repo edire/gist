@@ -185,7 +185,7 @@ public function geshihua($str){
 
 
 	$replace = array ("",
-	                  "\\\\",
+	                  "\\\\\\",
 	                  "\"",
 	                  "&",
 	                  "<",
