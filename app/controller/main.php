@@ -175,7 +175,8 @@ public function geshihua($str){
 	                 "'<[\/\!]*?[^<>]*?>'si",           // 去掉 HTML 标记
 					 "'[\r\n]+'",
 	                 "'([\r\n])[\s]+'",                 // 去掉空白字符
-	                 "/\"/",                 // 去掉空白字符
+	                 "/\"/",                 // 去掉"
+	                 "/\\/",                 // 去掉/
 	                 "'&#(\d+);'e");                    // 作为 PHP 代码运行
 	
 
@@ -196,6 +197,7 @@ public function geshihua($str){
 	                  "&ltbr\/&gt",
 	                  "\\1",
 	                  '\\"',
+	                  "\\\",
 	                  "chr(\\1)");
 	
 	$result = preg_replace ($search, $replace, $str);
