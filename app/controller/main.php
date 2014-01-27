@@ -30,8 +30,7 @@ class main extends spController
 
 			$article=$this->selectarc($conditions);
 			$arr=$this->JSON($article);
-			$result = preg_replace ('/\n/','', $arr);
-			echo $result;
+			echo $arr;
 			
 	}						
 
@@ -193,7 +192,7 @@ public function geshihua($str){
 	                  chr(163),
 	                  chr(169),
 	                  "",
-	                  "<br>",
+	                  "&ltbr&gt",
 	                  "\\1",
 	                  "chr(\\1)");
 	
